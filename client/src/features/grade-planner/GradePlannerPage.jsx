@@ -828,6 +828,74 @@ export default function GradePlannerPage() {
         ) : (
           <PlannerCard />
         )}
+
+        {/* SEO / explanation content */}
+        <Card>
+          <h2 style={{ marginTop: 0 }}>How Final Grade Calculations Work</h2>
+          <p>
+            Most classes use weighted grading, which means each category—such as quizzes,
+            homework, midterms, and the final exam—counts for a different percentage of
+            your overall grade. Your current grade is based on all completed categories,
+            and the final exam fills in the remaining percentage of the course.
+          </p>
+
+          <h3>Final Exam Formula</h3>
+          <p>To calculate what you need on your final, use this formula:</p>
+
+          <pre
+            style={{
+              background: 'rgba(255,255,255,0.05)',
+              padding: '12px',
+              borderRadius: '8px',
+              overflowX: 'auto',
+              fontSize: '14px',
+              whiteSpace: 'pre-wrap'
+            }}
+          >
+{`Required Final Score =
+(Target Grade – Current Grade × (1 – Final Weight)) ÷ Final Weight`}
+          </pre>
+
+          <p>
+            For example, if you have an <strong>87%</strong> in the class, your final
+            exam is worth <strong>30%</strong>, and you want a{' '}
+            <strong>90%</strong> overall, this calculator uses that formula to compute
+            the exact score you need on the final to hit your target grade.
+          </p>
+
+          <h3>Weighted Category Example</h3>
+          <p>
+            Suppose quizzes are worth 15%, homework is 20%, a midterm is 25%, and the
+            final exam is 40%. Your overall grade is determined by the average in each
+            category multiplied by its weight. The Full Class Planner on this site lets
+            you enter assignments for each category so you can see your real-time grade
+            and experiment with “what if” scores.
+          </p>
+
+          <h3>Common Questions</h3>
+          <ul>
+            <li>
+              <strong>“What do I need on my final to get an A?”</strong> — Use the Quick
+              Final Calculator with your current grade, final weight, and target grade.
+            </li>
+            <li>
+              <strong>“Can I see how each quiz or assignment affects my grade?”</strong>{' '}
+              — Yes, the Class Planner recalculates your grade every time you add or
+              edit an assignment.
+            </li>
+            <li>
+              <strong>“What if my weights don’t add to 100%?”</strong> — The planner
+              shows the total weight and warns you when the numbers don’t line up with a
+              valid syllabus.
+            </li>
+          </ul>
+
+          <p>
+            Use this tool throughout the semester to monitor your progress, stay on top
+            of each category, and make sure you know exactly what you need on your final
+            exam to reach your goal grade.
+          </p>
+        </Card>
       </Main>
     </Shell>
   );
