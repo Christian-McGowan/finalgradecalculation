@@ -78,8 +78,10 @@ const Input = styled.input`
   height: 40px;
   border: 1px solid rgba(150, 150, 200, 0.4);
   border-radius: 10px;
-  padding: 0 10px;
+  padding: 0 12px;
   font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
   background: rgba(25, 28, 45, 0.9);
   color: #e8ecff;
 `;
@@ -88,8 +90,10 @@ const Select = styled.select`
   height: 40px;
   border: 1px solid rgba(150, 150, 200, 0.4);
   border-radius: 10px;
-  padding: 0 10px;
+  padding: 0 12px;
   font-weight: 600;
+  font-size: 16px;        /* 👈 CRITICAL */
+  line-height: 1.2;
   background: rgba(25, 28, 45, 0.9);
   color: #e8ecff;
 `;
