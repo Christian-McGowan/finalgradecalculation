@@ -18,13 +18,19 @@ const Main = styled.main`
 /* =============== Shared UI Bits =============== */
 
 const Tabs = styled.div`
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   background: rgba(24, 28, 48, 0.9);
   padding: 6px;
   border-radius: 12px;
   border: 1px solid rgba(110, 120, 190, 0.5);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+
+  @media (max-width: 640px) {
+    margin-bottom: 10px;
+    width: 100%;
+  }
 `;
 
 const TabBtn = styled.button`
@@ -32,26 +38,32 @@ const TabBtn = styled.button`
   padding: 0 14px;
   border-radius: 10px;
   border: 1px solid transparent;
-  font-weight: 900;
+  background: ${p => (p.active ? 'rgba(142, 168, 255, 0.18)' : 'transparent')};
+  color: ${p => (p.active ? '#e8ecff' : 'rgba(232, 236, 255, 0.82)')};
   cursor: pointer;
-  background: ${p =>
-    p.active ? 'rgba(120, 120, 255, 0.35)' : 'transparent'};
-  color: #e8ecff;
-  transition: 0.15s ease;
+  font-weight: 800;
 
-  &:hover {
-    background: rgba(110, 120, 220, 0.4);
+  @media (max-width: 640px) {
+    height: 32px;
+    padding: 0 10px;
+    font-size: 13px;
   }
 `;
 
 const Card = styled.section`
-  background: rgba(20, 24, 40, 0.96);
-  border: 1px solid rgba(120, 120, 170, 0.3);
+  border: 1px solid rgba(110, 120, 190, 0.35);
+  background: rgba(12, 14, 28, 0.72);
   border-radius: 18px;
   padding: clamp(18px, 2.2vw, 24px);
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(6px);
   margin-bottom: 18px;
+
+  @media (max-width: 640px) {
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 16px;
+  }
 `;
 
 const Row = styled.div`
