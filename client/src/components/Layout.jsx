@@ -1,13 +1,30 @@
 import React, { useEffect, useState } from 'react';
 
+const NAV = [
+  { href: '/final-grade-calculator', label: 'Final Calculator' },
+  { href: '/what-score-do-i-need-on-my-final-exam', label: 'What Score Needed' },
+  { href: '/drop-lowest-grade-calculator', label: 'Drop Lowest' },
+  { href: '/grade-planner', label: 'Grade Planner' },
+  { href: '/tools', label: 'All Tools' },
+  { href: '/faq', label: 'FAQ' }
+];
+
 export default function Layout({ children }) {
   const [open, setOpen] = useState(false);
 
-  // Close menu when navigating via browser back/forward etc.
   useEffect(() => {
     const onPop = () => setOpen(false);
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  // Close menu on resize up
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 640) setOpen(false);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, []);
 
   return (
@@ -17,11 +34,12 @@ export default function Layout({ children }) {
           FinalGradeCalculation.com
         </a>
 
-        <nav className="navDesktop">
-          <a href="/final-grade-calculator">Final Calculator</a>
-          <a href="/grade-planner">Grade Planner</a>
-          <a href="/weighted-grade-calculator">Weighted Grades</a>
-          <a href="/faq">FAQ</a>
+        <nav className="navDesktop" aria-label="Primary navigation">
+          {NAV.slice(0, 5).map(item => (
+            <a key={item.href} href={item.href}>
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         <button
@@ -37,10 +55,11 @@ export default function Layout({ children }) {
 
       {open && (
         <div className="navMobile" role="navigation" aria-label="Mobile navigation">
-          <a href="/final-grade-calculator" onClick={() => setOpen(false)}>Final Calculator</a>
-          <a href="/grade-planner" onClick={() => setOpen(false)}>Grade Planner</a>
-          <a href="/weighted-grade-calculator" onClick={() => setOpen(false)}>Weighted Grades</a>
-          <a href="/faq" onClick={() => setOpen(false)}>FAQ</a>
+          {NAV.map(item => (
+            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+              {item.label}
+            </a>
+          ))}
           <div className="navDivider" />
           <a href="/privacy-policy" onClick={() => setOpen(false)}>Privacy</a>
           <a href="/terms" onClick={() => setOpen(false)}>Terms</a>
@@ -51,6 +70,7 @@ export default function Layout({ children }) {
       <main className="pageWrap">{children}</main>
 
       <footer className="footer">
+        <a href="/tools">Tools</a>
         <a href="/privacy-policy">Privacy</a>
         <a href="/terms">Terms</a>
         <a href="/contact">Contact</a>

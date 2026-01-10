@@ -12,29 +12,46 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage.jsx';
 import TermsPage from './pages/TermsPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 
+import ToolsPage from './pages/ToolsPage.jsx';
+import WhatScoreDoINeedOnMyFinalExamPage from './pages/WhatScoreDoINeedOnMyFinalExamPage.jsx';
+import CanIStillPassThisClassPage from './pages/CanIStillPassThisClassPage.jsx';
+import DropLowestGradeCalculatorPage from './pages/DropLowestGradeCalculatorPage.jsx';
+import FinalExamWorth40PercentPage from './pages/FinalExamWorth40PercentPage.jsx';
+
+import NotFoundPage from './pages/NotFoundPage.jsx';
+
 export default function App() {
   return (
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        {/* High-intent SEO landers */}
+        {/* Hub */}
+        <Route path="/tools" element={<ToolsPage />} />
+
+        {/* Core tools */}
         <Route path="/final-grade-calculator" element={<FinalGradeCalculatorPage />} />
         <Route path="/what-do-i-need-on-my-final" element={<WhatDoINeedOnMyFinalPage />} />
         <Route path="/weighted-grade-calculator" element={<WeightedGradeCalculatorPage />} />
         <Route path="/grade-planner" element={<GradePlannerLandingPage />} />
-        <Route path="/faq" element={<FAQPage />} />
 
-        {/* Ads-readiness / trust */}
+        {/* Long-tail traction pages */}
+        <Route path="/what-score-do-i-need-on-my-final-exam" element={<WhatScoreDoINeedOnMyFinalExamPage />} />
+        <Route path="/can-i-still-pass-this-class" element={<CanIStillPassThisClassPage />} />
+        <Route path="/drop-lowest-grade-calculator" element={<DropLowestGradeCalculatorPage />} />
+        <Route path="/final-exam-worth-40-percent" element={<FinalExamWorth40PercentPage />} />
+
+        {/* Trust */}
+        <Route path="/faq" element={<FAQPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/contact" element={<ContactPage />} />
 
-        {/* Optional: keep old URLs safe */}
+        {/* Old URLs */}
         <Route path="/home" element={<Navigate to="/" replace />} />
 
-        {/* Simple not-found */}
-        <Route path="*" element={<div style={{ padding: 16 }}>Page not found.</div>} />
+        {/* Not found */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>
   );

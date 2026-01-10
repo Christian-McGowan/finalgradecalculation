@@ -1,10 +1,13 @@
 :root {
   --bg: #050814;
+  --bg2: #070b1b;
   --text: #e8ecff;
+  --muted: rgba(232, 236, 255, 0.82);
+  --border: rgba(255, 255, 255, 0.10);
   --accent: #8ea8ff;
   --accent2: #ffd26a;
   --max-width: 1120px;
-  --ad-border: rgba(200, 200, 255, 0.22);
+  --radius: 18px;
 }
 
 *,
@@ -15,15 +18,18 @@
 
 html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #141a33 0, #050814 45%, #020309 100%);
-  color: var(--text);
   min-height: 100%;
 }
 
 body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 700px at 10% -10%, rgba(142, 168, 255, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 95% 0%, rgba(255, 210, 106, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -32,32 +38,51 @@ a {
   text-decoration: none;
 }
 
-#root {
-  min-height: 100vh;
+a:hover {
+  opacity: 0.95;
 }
 
-/* =========================
-   Mobile-first layout shell
-   ========================= */
+h1 {
+  font-size: 42px;
+  line-height: 1.08;
+  margin: 12px 0 10px;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 16px 0 10px;
+}
+
+p {
+  margin: 10px 0;
+  color: var(--muted);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
 
 .siteShell {
   min-height: 100dvh;
 }
 
+/* Top bar */
 .topbar {
   position: sticky;
   top: 0;
   z-index: 50;
-  height: 54px;               /* compact mobile height */
+  height: 54px;
   padding: 0 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-
   backdrop-filter: blur(10px);
   background: rgba(8, 10, 20, 0.78);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border);
 }
 
 .brand {
@@ -106,9 +131,8 @@ a {
   flex-direction: column;
   gap: 10px;
   padding: 12px;
-
   background: rgba(8, 10, 20, 0.92);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border);
 }
 
 .navDivider {
@@ -143,24 +167,22 @@ a {
   font-size: 12px;
 }
 
-/* Mobile behavior */
+/* Mobile density: make calculator visible sooner */
 @media (max-width: 640px) {
-  .navDesktop {
-    display: none;
-  }
-  .hamburger {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  .navDesktop { display: none; }
+  .hamburger { display: inline-flex; align-items: center; justify-content: center; }
+
+  h1 {
+    font-size: 34px;
+    line-height: 1.08;
+    margin: 10px 0 8px;
   }
 
-  /* Make headings tighter so calculator appears above the fold */
-  h1 {
-    font-size: 34px !important;
-    line-height: 1.08 !important;
-    margin: 10px 0 8px !important;
+  .pageWrap {
+    padding-top: 8px;
   }
-  h2 {
-    margin: 10px 0 8px !important;
-  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }

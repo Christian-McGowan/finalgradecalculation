@@ -2,56 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="index,follow" />
 
-    <!-- Default (will be replaced per-route by prerender) -->
-    <title>Final Grade Calculator & Class Planner | FinalGradeCalculation.com</title>
+    <!-- Default meta (SSG pages will have real content; client SEO refines titles/descriptions) -->
+    <title>Final Grade Calculator & Class Planner (Free) | FinalGradeCalculation.com</title>
     <meta
       name="description"
-      content="Free final grade calculator and class planner. Instantly see what score you need on your final and track quizzes, homework, midterms, and weighted categories."
+      content="Free final grade calculator and class planner. Instantly see what score you need on your final and plan weighted categories."
     />
     <link rel="canonical" href="https://finalgradecalculation.com/" />
+    <meta name="robots" content="index,follow" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Final Grade Calculator & Class Planner" />
+    <meta property="og:title" content="Final Grade Calculator & Class Planner (Free)" />
     <meta
       property="og:description"
-      content="Free final grade calculator and class planner. See what you need on your final and track weighted categories."
+      content="Instantly calculate what you need on your final exam and plan weighted categories like quizzes, homework, and midterms."
     />
     <meta property="og:url" content="https://finalgradecalculation.com/" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Final Grade Calculator & Class Planner" />
+    <meta name="twitter:title" content="Final Grade Calculator & Class Planner (Free)" />
     <meta
       name="twitter:description"
-      content="Free final grade calculator and class planner. See what you need on your final and track weighted categories."
+      content="Instantly calculate what you need on your final exam and plan weighted categories like quizzes, homework, and midterms."
     />
 
-    <!-- Optional favicon -->
     <link rel="icon" href="/vite.svg" />
 
-    <!-- Prerender entry (vite-prerender-plugin will call prerender() from this file) -->
-    <script prerender type="module" src="/src/prerender.jsx"></script>
-
-    <!-- Basic WebApplication schema (good baseline for homepage) -->
+    <!-- Site-level structured data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Final Grade Calculator & Class Planner",
+        "@type": "WebSite",
+        "name": "FinalGradeCalculation.com",
         "url": "https://finalgradecalculation.com/",
-        "applicationCategory": "EducationalApplication",
-        "operatingSystem": "Any",
-        "description": "Free final grade calculator and class planner. Calculate what score you need on your final exam and plan your grades across weighted categories.",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://finalgradecalculation.com/tools",
+          "query-input": "required name=search_term_string"
+        }
       }
     </script>
   </head>
-
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

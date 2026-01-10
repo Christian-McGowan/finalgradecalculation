@@ -1,9 +1,5 @@
-/* Keep App.css minimal – global styles live in global.css */
-
 #root {
   min-height: 100vh;
   margin: 0;
   padding: 0;
 }
-
-/* Don’t force centering on mobile */
